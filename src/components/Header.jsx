@@ -64,7 +64,7 @@ const userIcon = (
 );
 
 const Header = () => (
-  <header className="p-4 flex justify-between">
+  <header className="flex justify-between">
     <a href="" className="flex items-center gap-1">
       {demoIcon}
       <span className="font-bold text-xl">Logo Name</span>
