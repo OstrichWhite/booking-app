@@ -5,18 +5,20 @@ import Login from "./pages/Login";
 import Layout from "./components/Layout";
 import Register from "./pages/Register";
 import axios from "axios";
+import { UserContextProvider } from "./UserContext";
 
 axios.defaults.baseURL = "http://localhost:3000";
 axios.defaults.withCredentials = true;
-
 const App = () => (
-  <Routes>
-    <Route path="/" element={<Layout />}>
-      <Route index element={<Home />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
-    </Route>
-  </Routes>
+  <UserContextProvider>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+      </Route>
+    </Routes>
+  </UserContextProvider>
 );
 
 export default App;
