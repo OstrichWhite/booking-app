@@ -1,4 +1,6 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { UserContext } from "../UserContext";
 
 const demoIcon = (
   <svg
@@ -63,32 +65,36 @@ const userIcon = (
   </svg>
 );
 
-const Header = () => (
-  <header className="flex justify-between">
-    <a href="" className="flex items-center gap-1">
-      {demoIcon}
-      <span className="font-bold text-xl">Logo Name</span>
-    </a>
-    <div className="flex gap-2 border border-gray-300 rounded-full py-2 px-4 shadow-md shadow-gray-300">
-      <div>Anywhere</div>
-      <div className="border-l border-gray-300"></div>
-      <div>Any week</div>
-      <div className="border-l border-gray-300"></div>
-      <div>Add Guest</div>
-      <button className="bg-primary text-white rounded-full p-1">
-        {searchIcon}
-      </button>
-    </div>
-    <div className="flex items-center gap-2 border border-gray-300 rounded-full py-2 px-4">
-      {hamburgerMenu}
-      <Link
-        to={"/login"}
-        className="border bg-gray-500 text-white rounded-full border-gray-500 overflow-hidden"
-      >
-        {userIcon}
-      </Link>
-    </div>
-  </header>
-);
+const Header = () => {
+  const { user } = useContext(UserContext);
+  return (
+    <header className="flex justify-between">
+      <a href="" className="flex items-center gap-1">
+        {demoIcon}
+        <span className="font-bold text-xl">Logo Name</span>
+      </a>
+      <div className="flex gap-2 border border-gray-300 rounded-full py-2 px-4 shadow-md shadow-gray-300">
+        <div>Anywhere</div>
+        <div className="border-l border-gray-300"></div>
+        <div>Any week</div>
+        <div className="border-l border-gray-300"></div>
+        <div>Add Guest</div>
+        <button className="bg-primary text-white rounded-full p-1">
+          {searchIcon}
+        </button>
+      </div>
+      <div className="flex items-center gap-2 border border-gray-300 rounded-full py-2 px-4">
+        {hamburgerMenu}
+        <Link
+          to={"/login"}
+          className="border bg-gray-500 text-white rounded-full border-gray-500 overflow-hidden"
+        >
+          {userIcon}
+        </Link>
+        {!!user && <div>{user.name}</div>}
+      </div>
+    </header>
+  );
+};
 
 export default Header;
