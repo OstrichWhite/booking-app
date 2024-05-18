@@ -1,10 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-const inputHandler =
-  (setter) =>
-  ({ target: { value } }) =>
-    setter(value);
+import { inputHandler } from "../helper";
 
 const Register = () => {
   const [name, setName] = useState("");
