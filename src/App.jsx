@@ -17,7 +17,7 @@ const App = () => (
         <Route index element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/account" element={<Account />} />
+        <Route path="/account/:subpage?" element={<Account />} />
       </Route>
     </Routes>
   </UserContextProvider>
